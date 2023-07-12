@@ -1,0 +1,15 @@
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\bin\Debug\net6.0\lab5p6.exe
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\bin\Debug\net6.0\lab5p6.deps.json
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\bin\Debug\net6.0\lab5p6.runtimeconfig.json
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\bin\Debug\net6.0\lab5p6.dll
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\bin\Debug\net6.0\lab5p6.pdb
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.csproj.AssemblyReference.cache
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.GeneratedMSBuildEditorConfig.editorconfig
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.AssemblyInfoInputs.cache
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.AssemblyInfo.cs
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.csproj.CoreCompileInputs.cache
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.dll
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\refint\lab5p6.dll
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.pdb
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\lab5p6.genruntimeconfig.cache
+E:\SEM 5\ASP.net\LAB 5\lab5p6\lab5p6\obj\Debug\net6.0\ref\lab5p6.dll
