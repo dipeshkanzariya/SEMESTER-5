@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Data;
+@model DatabaseDemo.Areas.Branch.Models.MST_BranchModel;
+<form method="post" asp-area="Branch" asp-controller="MST_Branch" asp-action="MST_BranchSave">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" asp-for="BranchName" placeholder="Enter Branch Name" value="@Model.BranchName" aria-label="Branch Name" />
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" asp-for="BranchCode" placeholder="Enter Branch Code" value="@Model.BranchCode" aria-label="Branch Code" />
+            </div>
+            <div class="align-content-center">
+                <input type="hidden" value="@Model.BranchID" name="BranchID" />
+                <button type="submit" class="btn btn-outline-primary rounded-3">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

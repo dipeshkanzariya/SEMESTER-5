@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Data;
+@model DatabaseDemo.Areas.State.Models.LOC_StateModel;
+<form method="post" asp-area="State" asp-controller="LOC_State" asp-action="LOC_StateSave">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" asp-for="StateName" placeholder="Enter State Name" value="@Model.StateName" aria-label="State Name" />
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" asp-for="StateCode" placeholder="Enter State Code" value="@Model.StateCode" aria-label="State Code" />
+            </div>
+            <div class="col form-group">
+                <select class="form-control" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList,"CountryID","CountryName"))"><option>Select Countrty</option></select>
+            </div>
+            <div class="align-content-center">
+                <input type="hidden" value="@Model.StateID" name="StateID" />
+                <button type="submit" class="btn btn-outline-primary rounded-3">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
