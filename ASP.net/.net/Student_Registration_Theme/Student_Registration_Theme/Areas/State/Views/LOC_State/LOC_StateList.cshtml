@@ -114,7 +114,7 @@
                             </form>
                             <form asp-area ="State" asp-controller ="LOC_State" asp-action ="DeleteState">
                                 <input type ="hidden" name="StateId" value="@Convert.ToInt32(dr["StateId"])" />
-                                <button type ="submit" class="btn btn-danger py-1"><i class="bi bi-trash" style="font-size: 14px"></i></button>
+                                <button type ="submit" onclick="return DeleteItem()" class="btn btn-danger py-1"><i class="bi bi-trash" style="font-size: 14px"></i></button>
                             </form>
 
                         </td>
@@ -143,6 +143,13 @@
                 });
             });
         });
+
+        function DeleteItem() {
+            if (confirm("Are you sure you want to delete ...?")) {
+                return true;
+            }
+            return false;
+        }
     </script>
 
 }

@@ -16,10 +16,12 @@
 
         <div class="col my-4">
             <input type="text" class="form-control" asp-for="CityName" value="@Model.CityName" placeholder="City Name" aria-label="First name">
+            <span asp-validation-for="CityName" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
             <input type="text" class="form-control" asp-for="CityCode" value="@Model.CityCode" placeholder="City Code" aria-label="Last name">
+            <span asp-validation-for="CityCode" class="text-danger"></span>
         </div>
 
         <div class="col my-4 form-group">

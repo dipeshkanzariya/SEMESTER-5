@@ -14,10 +14,12 @@
 
         <div class="col my-4">
             <input type="text" class="form-control" asp-for= "CountryName" placeholder="Country Name" aria-label="First name">
+            <span asp-validation-for="CountryName" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
             <input type="text" class="form-control" asp-for="CountryCode" placeholder="Country Code" aria-label="Last name">
+            <span asp-validation-for="CountryCode" class="text-danger"></span>
         </div>
 
         <div class="col mt-4">

@@ -68,7 +68,17 @@ namespace Student_Registration_Theme.Areas.Country.Controllers
 
         public IActionResult LOC_CountrySave(LOC_CountryModel CM)
         {
+                if(string.IsNullOrEmpty(CM.CountryName))
+                {
+                ModelState.AddModelError("CountryName", "Country Name is required");
+                }
+                if (string.IsNullOrEmpty(CM.CountryCode))
+                {
+                    ModelState.AddModelError("CountryCode", "Country Code is required");
+                }
 
+            if (ModelState.IsValid)
+            {
                 string connection_string = this.Configuration.GetConnectionString("MyConnectionString");
                 SqlConnection conn = new SqlConnection(connection_string);
                 conn.Open();
@@ -95,8 +105,8 @@ namespace Student_Registration_Theme.Areas.Country.Controllers
                 conn.Close();
 
                 return RedirectToAction("LOC_CountryList");
-
-            //return View("LOC_CountryAddEdit",CM);
+            }
+            return View("LOC_CountryAddEdit",CM);
         }
 
         public IActionResult DeleteCountry(int CountryID)

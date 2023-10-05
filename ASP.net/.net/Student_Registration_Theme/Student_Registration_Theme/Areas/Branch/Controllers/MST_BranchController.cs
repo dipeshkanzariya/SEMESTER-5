@@ -33,27 +33,41 @@ namespace Student_Registration_Theme.Areas.Branch.Controllers
 
         public IActionResult MST_BranchSave(MST_BranchModel bm)
         {
-            string connection_string = this.Configuration.GetConnectionString("MyConnectionString");
-            SqlConnection conn = new SqlConnection(connection_string);
-            conn.Open();
-
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-            if (bm.BranchID == 0)
+            if(string.IsNullOrEmpty(bm.BranchName))
             {
-                cmd.CommandText = "PR_MST_Branch_Insert";
+                ModelState.AddModelError("BranchName", "Branch Name is required");
             }
-            else
+            if(string.IsNullOrEmpty(bm.BranchCode))
             {
-                cmd.CommandText = "PR_MST_Branch_UpdateByPK";
-                cmd.Parameters.AddWithValue("@BranchID", bm.BranchID);
+                ModelState.AddModelError("BranchCode", "Branch Code is required");
             }
-            cmd.Parameters.AddWithValue("@BranchName", bm.BranchName);
-            cmd.Parameters.AddWithValue("@BranchCode", bm.BranchCode);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            return RedirectToAction("MST_BranchList");
+            
+            if(ModelState.IsValid)
+            {
+                string connection_string = this.Configuration.GetConnectionString("MyConnectionString");
+                SqlConnection conn = new SqlConnection(connection_string);
+                conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                if (bm.BranchID == 0)
+                {
+                    cmd.CommandText = "PR_MST_Branch_Insert";
+                }
+                else
+                {
+                    cmd.CommandText = "PR_MST_Branch_UpdateByPK";
+                    cmd.Parameters.AddWithValue("@BranchID", bm.BranchID);
+                }
+                cmd.Parameters.AddWithValue("@BranchName", bm.BranchName);
+                cmd.Parameters.AddWithValue("@BranchCode", bm.BranchCode);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return RedirectToAction("MST_BranchList");
+            }
+
+            return View("MST_branchAddEdit", bm);
         }
 
         public IActionResult MST_BranchAddEdit(int? BranchID = 0)

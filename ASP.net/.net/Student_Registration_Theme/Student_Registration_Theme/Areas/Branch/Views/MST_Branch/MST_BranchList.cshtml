@@ -129,7 +129,7 @@
                             </form>
                             <form method="post" asp-area="Branch" asp-controller="MST_Branch" asp-action="DeleteBranch">
                                 <input type="hidden" name="BranchID" value="@Convert.ToInt32(@dr["BranchID"])" />
-                                <button type="submit" class="btn btn-danger py-1"><i class="bi bi-trash" style="font-size: 14px"></i></button>
+                                <button type="submit" onclick="return DeleteItem()" class="btn btn-danger py-1"><i class="bi bi-trash" style="font-size: 14px"></i></button>
                             </form>
 
                         </td>
@@ -158,6 +158,13 @@
                 });
             });
         });
+
+        function DeleteItem() {
+            if (confirm("Are you sure you want to delete ...?")) {
+                return true;
+            }
+            return false;
+        }
     </script>
 
 }

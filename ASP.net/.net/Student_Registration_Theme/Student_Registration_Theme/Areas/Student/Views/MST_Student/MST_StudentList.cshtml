@@ -165,7 +165,7 @@
                             </form>
                             <form method="post" asp-area="Student" asp-controller="MST_Student" asp-action="DeleteStudent">
                                 <input type="hidden" name="StudentID" value="@Convert.ToInt32(@dr["StudentID"])" />
-                                <button type="submit" class="btn btn-danger py-1"><i class="bi bi-trash" style="font-size: 14px"></i></button>
+                                <button type="submit" onclick="return DeleteItem()" class="btn btn-danger py-1"><i class="bi bi-trash" style="font-size: 14px"></i></button>
                             </form>
 
                         </td>
@@ -194,6 +194,13 @@
                 });
             });
         });
+
+        function DeleteItem() {
+            if (confirm("Are you sure you want to delete ...?")) {
+                return true;
+            }
+            return false;
+        }
     </script>
 
 }
