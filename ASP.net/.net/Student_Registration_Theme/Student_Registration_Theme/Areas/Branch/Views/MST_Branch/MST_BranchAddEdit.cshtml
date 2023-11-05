@@ -13,11 +13,13 @@
     <form class="pt-3" method="post" asp-area="Branch" asp-controller="MST_Branch" asp-action="MST_BranchSave">
 
         <div class="col my-4">
+            <lable>Branch Name</lable>
             <input type="text" class="form-control" asp-for="BranchName" placeholder="Branch Name" aria-label="First name">
             <span asp-validation-for="BranchName" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
+            <lable>Branch Code</lable>
             <input type="text" class="form-control" asp-for="BranchCode" placeholder="Branch Code" aria-label="Last name">
             <span asp-validation-for="BranchCode" class="text-danger"></span>
         </div>
@@ -30,5 +32,13 @@
         </div>
 
     </form>
+
+    <div class="col mt-4 text-end ms-auto">
+
+        <a asp-area="Branch" asp-controller="MST_Branch" asp-action="MST_BranchList">
+            <button class="btn btn-success" type="submit">Back</button>
+        </a>
+
+    </div>
 
 </div>

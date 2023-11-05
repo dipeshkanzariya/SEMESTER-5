@@ -1,8 +1,10 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @using Student_Registration_Theme.Areas.City.Models;
 }
 
-@model Student_Registration_Theme.Areas.City.Models.LOC_CityModel;
+@model LOC_CityModel
+
 @using static System.Data.DataTable;
 @using Student_Registration_Theme.Areas.Country.Models
 
@@ -14,59 +16,73 @@
 
     <form class="pt-3" method="post" asp-area="City" asp-controller="LOC_City" asp-action="LOC_CitySave">
 
+        <div class="col my-4 form-group">
+            <label>Country</label>
+            <select onchange="funcOnStateChange()" class="form-control" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList,"CountryID","CountryName"))">
+                <option value="">Select Countrty</option>
+            </select>
+            <span asp-validation-for="CountryID" class="text-danger"></span>
+        </div>
+
         <div class="col my-4">
-            <input type="text" class="form-control" asp-for="CityName" value="@Model.CityName" placeholder="City Name" aria-label="First name">
+            <label>State</label>
+            <select class="form-control" asp-for="StateID" asp-items="@(new SelectList(ViewBag.StateList, "StateID", "StateName"))">
+                <option value="">Select State</option>
+            </select>
+            <span asp-validation-for="StateID" class="text-danger"></span>
+        </div>
+        
+        <div class="col my-4">
+            <label>City Name</label>
+            <input type="text" class="form-control" asp-for="CityName" placeholder="City Name" aria-label="First name">
             <span asp-validation-for="CityName" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
-            <input type="text" class="form-control" asp-for="CityCode" value="@Model.CityCode" placeholder="City Code" aria-label="Last name">
+            <label>City Code</label>
+            <input type="text" class="form-control" asp-for="CityCode" placeholder="City Code" aria-label="Last name">
             <span asp-validation-for="CityCode" class="text-danger"></span>
         </div>
 
-        <div class="col my-4 form-group">
-            <select onchange="funcOnStateChange()" id="selectedCountry" class="form-control" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList,"CountryID","CountryName"))">
-                <option>Select Countrty</option>
-            </select>
-        </div>
-
-        <div class="col my-4">
-            <label>StateName</label>
-            <select id="selectedState" class="form-control" asp-for="StateID">
-                <option>Select State</option>
-            </select>
-        </div>
-
         <div class="col mt-4">
-
-            <input type="hidden" name="CityID" value="@Model.CityID" />
+            @Html.HiddenFor(x => x.CityID)
+            @* <input type="hidden" name="CityID" value="@Model.CityID" /> *@
             <button class="btn btn-primary" type="submit">Submit</button>
 
         </div>
 
     </form>
 
+    <div class="col mt-4 text-end ms-auto">
+
+        <a asp-area="City" asp-controller="LOC_City" asp-action="LOC_CityList">
+            <button class="btn btn-success" type="submit">Back</button>
+        </a>
+
+    </div>
+
+
 </div>
 
 <script>
     function funcOnStateChange() {
-        var CountryID = $("#selectedCountry").val();
+        var CountryID = $("#CountryID").val();
 
-        $("#selectedState").empty();
-        $("#selectedState").append($("<option></option>").val("").html("Select State"));
+        $("#StateID").empty();
+        $("#StateID").append($("<option></option>").val("").html("Select State"));
         if (CountryID !== "") {
             $.ajax(
                 {
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
-                    url: "@Url.Action("StatesForComboBox","LOC_City")" + "?&CountryID=" + CountryID,
+                    url: "@Url.Action("StatesForComboBox","LOC_City", new {area = "City"})" + "?&CountryID=" + CountryID,
                     data: {},
                     dataType: "json",
                     success: function (Result) {
 
                         $.each(Result, function (key, value) {
 
-                            $("#selectedState").append($("<option></option>").val(value.stateID).html(value.stateName));
+                            $("#StateID").append($("<option></option>").val(value.stateID).html(value.stateName));
                         });
                     },
                     error: function (err) {

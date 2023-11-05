@@ -13,6 +13,7 @@
     <form class="pt-3" method="post" asp-area="Student" asp-controller="MST_Student" asp-action="MST_StudentSave">
 
         <div class="col my-4">
+            <label> Student Name</label>
             <input type="text" class="form-control" asp-for="StudentName" placeholder="Student Name" aria-label="First name">
             <span asp-validation-for="StudentName" class="text-danger"></span>
         </div>
@@ -20,7 +21,7 @@
         <div class="col my-4 form-group">
             <label>Branch</label>
             <select class="form-control" asp-for="BranchID" asp-items="@(new SelectList(ViewBag.BranchList,"BranchID" , "BranchName"))">
-                <option>Select Branch</option>
+                <option value="">Select Branch</option>
             </select>
             <span asp-validation-for="BranchID" class="text-danger"></span>
         </div>
@@ -28,7 +29,7 @@
         <div class="col my-4 form-group">
             <label>City</label>
             <select class="form-control" asp-for="CityID" asp-items="@(new SelectList(ViewBag.CityList,"CityID" , "CityName"))">
-                <option>Select City</option>
+                <option value="">Select City</option>
             </select>
             <span asp-validation-for="CityID" class="text-danger"></span>
         </div>
@@ -60,7 +61,7 @@
 
         <div class="col my-4">
             <label> Birth Date</label>
-            <input type="date" placeholder="Enter Birthdate" asp-for="BirthDate" class="form-control" value="@Convert.ToDateTime(Model.BirthDate)" />
+            <input type="date" placeholder="Enter Birthdate" asp-for="BirthDate" class="form-control"/>
             <span asp-validation-for="BirthDate" class="text-danger"></span>
         </div>
 
@@ -75,15 +76,14 @@
             @* <input type="text" placeholder="IS Active True or False" asp-for="IsActive" class="form-control" value="@Convert.ToBoolean(Model.IsActive)" /> *@
             <div class="d-flex mt-3">
                 <div class="d-flex">
-                    <input type="radio" name="active" value="true" checked />
+                    <input type="radio" asp-for="IsActive" value="true" checked />
                     <span class="ms-3">Yes</span>
                 </div>
                 <div class="d-flex ms-4">
-                    <input type="radio" name="active" value="false" />
+                    <input type="radio" asp-for="IsActive" value="false" />
                     <span class="ms-3">No</span>
                 </div>
             </div>
-            <span asp-validation-for="IsActive" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
@@ -91,15 +91,14 @@
             @* <input type="text" placeholder="Enter Gender" asp-for="Gender" class="form-control" value="@Model.Gender" /> *@
             <div class="d-flex mt-3">
                 <div class="d-flex">
-                    <input type="radio" name="active" value="true" checked />
+                    <input type="radio" asp-for="Gender" value="Male" checked />
                     <span class="ms-3">Male</span>
                 </div>
                 <div class="d-flex ms-4">
-                    <input type="radio" name="active" value="false" />
+                    <input type="radio" asp-for="Gender" value="Female" />
                     <span class="ms-3">Female</span>
                 </div>
             </div>
-            <span asp-validation-for="Gender" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
@@ -116,5 +115,13 @@
         </div>
 
     </form>
+
+    <div class="col mt-4 text-end ms-auto">
+
+        <a asp-area="Student" asp-controller="MST_Student" asp-action="MST_StudentList">
+            <button class="btn btn-success" type="submit">Back</button>
+        </a>
+
+    </div>
 
 </div>

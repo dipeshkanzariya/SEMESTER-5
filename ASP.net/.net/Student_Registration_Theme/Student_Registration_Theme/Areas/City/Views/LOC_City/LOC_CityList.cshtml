@@ -115,8 +115,8 @@
                         <td class="text-center">@dr["CityCode"]</td>
                         <td class="text-center">@dr["StateName"]</td>
                         <td class="text-center">@dr["CountryName"]</td>
-                        <td class="text-center">@dr["Created"]</td>
-                        <td class="text-center">@dr["Modified"]</td>
+                        <td class="text-center">@Convert.ToDateTime(dr["Created"]).ToString("dd-MM-yyyy")</td>
+                        <td class="text-center">@Convert.ToDateTime(dr["Modified"]).ToString("dd-MM-yyyy")</td>
                         <td class="text-center d-flex justify-content-center align-items-center">
 
                             <form asp-area="City" asp-controller="LOC_City" asp-action="LOC_CityAddEdit">

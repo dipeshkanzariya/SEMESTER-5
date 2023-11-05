@@ -13,11 +13,13 @@
     <form class="pt-3" method="post" asp-area="Country" asp-controller="LOC_Country" asp-action="LOC_CountrySave">
 
         <div class="col my-4">
+            <label>Country Name</label>
             <input type="text" class="form-control" asp-for= "CountryName" placeholder="Country Name" aria-label="First name">
             <span asp-validation-for="CountryName" class="text-danger"></span>
         </div>
 
         <div class="col my-4">
+            <label>Country Code</label>
             <input type="text" class="form-control" asp-for="CountryCode" placeholder="Country Code" aria-label="Last name">
             <span asp-validation-for="CountryCode" class="text-danger"></span>
         </div>
@@ -30,5 +32,13 @@
         </div>
 
     </form>
+
+    <div class="col mt-4 text-end ms-auto">
+
+        <a asp-area="Country" asp-controller="LOC_Country" asp-action="LOC_CountryList">
+            <button class="btn btn-success" type="submit">Back</button>
+        </a>
+
+    </div>
 
 </div>
